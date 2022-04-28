@@ -1,0 +1,124 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+  />
+</head>
+
+<nav
+  class="navbar navbar-expand-xxl navbar-dark bg-dark section-to-not-print"
+  id="section-to-not-print"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+
+        <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Stores
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Mumbra Store</a></li>
+            <li><a class="dropdown-item" href="#">Pune Store</a></li>
+            <li><a class="dropdown-item" href="#">Add Store +</a></li>
+          </ul>
+        </li> -->
+      </ul>
+      <!-- <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+      <a
+        class="nav-link dropdown-toggle"
+        id="userdrop"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        ><i class="bi bi-person-circle">Admin</i></a
+      >
+
+      <ul class="dropdown-menu" aria-labelledby="userdrop">
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="bi bi-box-arrow-left"> Logout</i></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<span class="nav-side-menu section-to-not-print" id="section-to-not-print">
+  <span class="brand">Admin Panel</span>
+  <ul>
+    <a routerLink="/dashboard">
+      <li><i class="bi bi-window-sidebar"></i> Dashboard</li>
+    </a>
+
+    <a routerLink="/customer">
+      <li><i class="bi bi-people-fill"></i> Customers</li>
+    </a>
+
+    <a routerLink="/product">
+      <li><i class="bi bi-box-seam"></i>Products</li>
+    </a>
+
+    <a routerLink="/orders">
+      <li><i class="bi bi-journal-check"></i> Orders</li>
+    </a>
+
+    <a routerLink="/vendor">
+      <li><i class="bi bi-person-square"></i> Vendors</li>
+    </a>
+
+    <a routerLink="/warehouses">
+      <li><i class="bi bi-bank2"></i> Warehouses</li>
+    </a>
+
+    <a routerLink="/inventory">
+      <li><i class="bi bi-basket-fill"></i> Inventory</li>
+    </a>
+
+    <a routerLink="/payment">
+      <li><i class="bi bi-cash-stack"></i> Payment</li>
+    </a>
+
+    <a routerLink="/payment-customer-detail">
+      <li><i class="bi bi-cash-stack"></i> Payment Customer</li>
+    </a>
+    <!-- <a routerLink="/store">
+      <li><i class="bi bi-shop"></i> Store</li>
+    </a> -->
+
+    <a routerLink="/users">
+      <li><i class="bi bi-person-lines-fill"></i> User</li>
+    </a>
+  </ul>
+</span>

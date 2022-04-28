@@ -1,0 +1,2 @@
+Run this query in database : //26/9/21
+ALTER TABLE `user` ADD `last_login` DATETIME NULL DEFAULT NULL AFTER `updated_by`;

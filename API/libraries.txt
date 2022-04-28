@@ -1,0 +1,11 @@
+npm install --save express
+
+npm install -g nodemon
+
+npm install jsonwebtoken
+
+npm install mysql2-promise --save
+
+npm install --save mysql2
+
+npm install async --save

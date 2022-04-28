@@ -1,0 +1,64 @@
+.main {
+  background: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  background-image: url("https://media.istockphoto.com/photos/creative-visual-of-business-big-data-and-finance-analysis-on-computer-picture-id1311253708?b=1&k=20&m=1311253708&s=170667a&w=0&h=08Gf5bCFD7X2BLgV42agHXs6oxg-X35LvNoQDSLq4J0=");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.main .blackBackground {
+  background-color: rgba(0, 0, 0, 0.55);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainHeader {
+  width: 100%;
+  min-height: 50vh;
+  color: #e0e0e0;
+  text-align: center;
+  padding-top: 8%;
+}
+
+.mainHeader div {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mainHeader {
+  width: 100%;
+  min-height: 50vh;
+  color: #e0e0e0;
+  text-align: center;
+  padding-top: 8%;
+}
+
+.mainHeader div {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainHeader div h1 {
+  font-size: 60px;
+}
+
+.mainHeader div button {
+  padding: 8px 40px;
+  outline: none;
+  background: transparent;
+  border-radius: 100px;
+  color: #fff;
+  font-weight: 400;
+  margin-top: 20px;
+  border: 2px solid rgb(43, 103, 233);
+  transition: 0.3s all;
+}
+
+.mainHeader div button:hover {
+  border: 2px solid transparent;
+  background-color: rgb(43, 103, 233);
+}

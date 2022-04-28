@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4"><strong>Payment History</strong></h1>
+        <p class="lead"><strong>View Payment History of a Customer</strong></p>
+    </div>
+</div>
+
+<div class="button">
+    <!-- <button type="button" class="btn btn-primary btn-dark btn me-3" data-bs-toggle="modal" data-bs-target="#add">
+        Create Payment
+    </button> -->
+    <a routerLink="/payment-customer-detail"><button type="button" class="btn btn-outline-dark"><i
+                class="bi bi-arrow-return-left"></i>
+            Back
+        </button></a>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table table-light table-striped table-hover table-sm table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Amount Paid</th>
+                <th>Mode of Payment</th>
+            </tr>
+        </thead>
+        <tbody class="align-middle tag">
+            <tr>
+                <td rowspan="1000000"><strong>1</strong></td>
+                <td rowspan="1000000"><strong>Clark</strong></td>
+                <td>3000</td>
+                <td>Debit Card</td>
+                <!-- <td>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#edit">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#delete">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td> -->
+            <tr>
+                <td>5000</td>
+                <td>Debit Card</td>
+            </tr>
+            <tr>
+                <td>5000</td>
+                <td>Credit Card</td>
+            </tr>
+            <tr>
+                <td>2000</td>
+                <td>Amazon Pay UPI</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

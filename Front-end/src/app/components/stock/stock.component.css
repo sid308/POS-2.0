@@ -1,0 +1,26 @@
+.table {
+    width: 82%;
+    margin-top: 1%;
+   
+  }
+  
+.button {
+   margin-left: 16%;
+}
+.jumbotron {
+  
+   padding-right: 0px;
+}
+
+.a button{
+   text-decoration: none;
+   color: #000;
+}
+.a:hover{
+   color: #fff;
+}
+
+.modal-content {
+   padding-left: 10px;
+   padding-right: 10px;
+}

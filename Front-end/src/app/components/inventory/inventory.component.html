@@ -1,0 +1,276 @@
+<app-navbar></app-navbar>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><strong>Inventory</strong></h1>
+    <p class="lead">
+      <strong>All the info about Inventory is shown here.</strong>
+    </p>
+  </div>
+</div>
+<div class="button">
+  <button
+    type="button"
+    class="btn btn-primary btn-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#add"
+    (click)="open(addmodal)"
+  >
+    Create Inventory
+  </button>
+</div>
+<!-- Add Model -->
+<ng-template #addmodal let-modal>
+  <div class="modal-header" id="add">
+    <h4 class="modal-title" id="modal-basic-title">Create Inventory</h4>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <!-- <label for="form-text" class="form-label">FullName :</label> -->
+      </div>
+      <div class="mb-3">
+        <!-- <label for="form-text" class="form-label">FullName :</label> -->
+        <input
+          type="text"
+          name="Stock"
+          placeholder="Stock"
+          class="form-control"
+          id="Stock"
+          aria-describedby="name"
+          [(ngModel)]="Astock"
+        />
+      </div>
+
+      <div class="mb-3">
+        <!-- <label for="form-text" class="form-label">FullName :</label> -->
+        <input
+          type="text"
+          name="Warehouse"
+          placeholder="Warehouse"
+          class="form-control"
+          id="Warehouse"
+          aria-describedby="name"
+          [(ngModel)]="Aware"
+        />
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      data-dismiss="modal"
+      (click)="modal.close('save')"
+    >
+      Close
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      (click)="addInventory()"
+      (click)="modal.dismiss('')"
+    >
+      Submit
+    </button>
+  </div>
+</ng-template>
+<!-- <div class="dropdown d-grid gap-2 d-md-flex justify-content-md-end me-4">
+  <div class="me-5">
+    <form class="d-flex">
+      <input
+        class="form-control btn-sm"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-dark btn-sm" type="submit">
+        <i class="bi bi-search"></i>
+      </button>
+    </form>
+  </div>
+  <button
+    class="btn btn-outline-dark btn-sm dropdown-toggle me-5 ms-5"
+    type="button"
+    id="dropdownMenuButton1"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <i class="bi bi-filter"></i> Sort by
+  </button>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li>
+      <a class="dropdown-item"><i class="bi bi-sort-alpha-down"></i>A to Z</a>
+    </li>
+    <li>
+      <a class="dropdown-item"><i class="bi bi-sort-alpha-up"></i>Z to A</a>
+    </li>
+    <li>
+      <a class="dropdown-item"
+        ><i class="bi bi-sort-up"></i>Amount : Low to High</a
+      >
+    </li>
+    <li>
+      <a class="dropdown-item"
+        ><i class="bi bi-sort-down"></i>Amount : High to Low</a
+      >
+    </li>
+  </ul>
+
+  <button
+    class="btn btn-outline-dark btn-sm dropdown-toggle ms-5 me-2"
+    type="button"
+    id="dropdownMenuButton1"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <i class="bi bi-funnel"></i> Filter
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item">Warehouse Name</a></li>
+    <li><a class="dropdown-item">Recent</a></li>
+    <li><a class="dropdown-item">This Week</a></li>
+    <li><a class="dropdown-item">Last Week</a></li>
+    <li><a class="dropdown-item">This Month</a></li>
+    <li><a class="dropdown-item">Last Month</a></li>
+    <li><a class="dropdown-item">Choose Date </a></li>
+  </ul>
+</div> -->
+
+<div class="table-responsive mt-3">
+  <table
+    class="table table-light table-striped table-hover table-sm table-responsive"
+  >
+    <thead>
+      <tr>
+        <th scope="row" *ngFor="let column of headers">
+          {{ column }}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="align-middle tag"></tbody>
+    <tbody>
+      <tr *ngFor="let i of Inv">
+        <td>{{ i.id }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.unit_price }}</td>
+        <td>{{ i.stock }}</td>
+        <td>{{ i.amount }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            (click)="open(Editmodal)"
+            (click)="getSingleInventory(i.id)"
+            (click)="update(i)"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <ng-template #Editmodal let-modal>
+            <div class="modal-header" id="add">
+              <h4 class="modal-title" id="modal-basic-title">
+                Create Inventory
+              </h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <!-- <label for="form-text" class="form-label">FullName :</label> -->
+                </div>
+                <div class="mb-3">
+                  <!-- <label for="form-text" class="form-label">FullName :</label> -->
+                  <input
+                    type="text"
+                    name="Stock"
+                    placeholder="Stock"
+                    class="form-control"
+                    id="Stock"
+                    aria-describedby="name"
+                    [(ngModel)]="InventoryToUpdate.stock"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <!-- <label for="form-text" class="form-label">FullName :</label> -->
+                  <input
+                    type="text"
+                    name="Warehouse"
+                    placeholder="Warehouse"
+                    class="form-control"
+                    id="Warehouse"
+                    aria-describedby="name"
+                    [(ngModel)]="Aware"
+                  />
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                data-dismiss="modal"
+                (click)="modal.close('save')"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                (click)="putInventory(i.id)"
+                (click)="modal.dismiss('')"
+              >
+                Submit
+              </button>
+            </div>
+          </ng-template>
+          <button type="button" (click)="open(deleteModal)" class="btn">
+            <i class="bi bi-trash"></i>
+          </button>
+          <ng-template #deleteModal let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Warning!</h4>
+            </div>
+            <div class="modal-body">Are you sure?</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                (click)="modal.close('Save click')"
+              >
+                Close
+              </button>
+              <button
+                class="btn btn-danger"
+                (click)="deleteUser(i.id)"
+                (click)="modal.dismiss('')"
+              >
+                Delete
+              </button>
+            </div>
+          </ng-template>
+          <a routerLink="/warehouses"
+            ><button type="button" class="btn">
+              <i class="bi bi-bank2"></i></button
+          ></a>
+        </td>
+        <td>warehouses</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><strong>Total:</strong></td>
+        <td></td>
+        <td></td>
+        <td><strong>xxxx</strong></td>
+        <td><strong>xxxxx</strong></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+<!-- Modal -->
+
+<!-- Edit Modal -->

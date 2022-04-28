@@ -1,0 +1,464 @@
+<app-navbar></app-navbar>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><strong>Vendors</strong></h1>
+    <p class="lead">
+      <strong>All the info about vendors is shown here.</strong>
+    </p>
+  </div>
+</div>
+
+<div class="button">
+  <button
+    type="button"
+    class="btn btn-primary btn-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#create"
+  >
+    Create Vendor
+  </button>
+</div>
+
+
+
+<div class="table-responsive mt-3">
+  <table
+    class="
+      table table-light table-striped table-hover table-sm table-responsive
+    "
+  >
+    <thead>
+      <tr>
+        <th scope="row" *ngFor="let column of headers">
+          {{ column }}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="align-middle">
+      <tr *ngFor="let v of Vend; let i = index;">
+        <td>{{ i + 1 }}</td>
+        <td>{{ v.name }}</td>
+        <td>{{ v.email }}</td>
+        <td>{{ v.phone }}</td>
+        <td>{{ v.gst }}</td>
+        <td>{{ v.address }}</td>
+        <td>{{ v.city }}</td>
+        <td>{{ v.state }}</td>
+        <td>{{ v.pin_code }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#edit"
+            (click)="getSingleVendor(v.id)"
+            (click)="update(v)"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
+            
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#history"
+          >
+            <i class="bi bi-clock-history"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--edit Modal -->
+  <div
+    *ngFor="let v of Vend"
+    class="modal fade"
+    id="edit"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="create">
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">Name</label>
+                <input
+                  name="Ename"
+                  placeholder="Enter Name"
+                  type="text"
+                  id="form6Example1"
+                  class="form-control"
+                  [(ngModel)]="VendorToUpdate.name"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2">GST</label>
+                <input
+                  name="Egst"
+                  placeholder="GST"
+                  type="number"
+                  id="form6Example2"
+                  class="form-control"
+                  [(ngModel)]="VendorToUpdate.gst"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example3">Email</label>
+            <input
+              name="Eemail"
+              placeholder="Enter Email"
+              type="text"
+              id="form6Example3"
+              class="form-control"
+              [(ngModel)]="VendorToUpdate.email"
+            />
+          </div>
+
+          <!-- Text input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example4">Phone</label>
+            <input
+              name="Ephone"
+              placeholder="Enter Phone Number"
+              type="number"
+              id="form6Example4"
+              class="form-control"
+              [(ngModel)]="VendorToUpdate.phone"
+            />
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example5">Address</label>
+            <input
+              name="Eadd_id"
+              placeholder="Enter Address"
+              type="email"
+              id="form6Example5"
+              class="form-control"
+              [(ngModel)]="VendorToUpdate.address_id"
+            />
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline">
+            <label class="form-label" for="form6Example6">City</label>
+            <input
+              name="Ecity"
+              placeholder="Enter City Name"
+              type="text"
+              id="form6Example6"
+              class="form-control"
+              [(ngModel)]="VendorToUpdate.city"
+            />
+          </div>
+
+          <!-- Message input -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">State</label>
+                <input
+                  name="Estate"
+                  placeholder="Enter State"
+                  placeholder="Enter State"
+                  type="text"
+                  id="form6Example1"
+                  class="form-control"
+                  [(ngModel)]="VendorToUpdate.state"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2">Pincode</label>
+                <input
+                  name="Ezip"
+                  placeholder="Enter Pincode"
+                  type="number"
+                  id="form6Example2"
+                  class="form-control"
+                  [(ngModel)]="VendorToUpdate.pin_code"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Submit button -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark"
+              (click)="putvendor(v.id)"
+              data-bs-dismiss="modal"
+            >
+              Done
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--history Modal -->
+  <div
+    class="modal fade"
+    id="history"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <table
+          class="
+            table-history table-light table-bordered table-striped table-hover
+          "
+        >
+          <thead>
+            <tr>
+              <th scope="col">Date and Time</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">GST</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Payment Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12/02/2020 3:32 PM</td>
+              <td>dead body</td>
+              <td>5Mil</td>
+              <td>15%</td>
+              <td>$150</td>
+              <td>Paid</td>
+            </tr>
+            <tr>
+              <td>12/02/2020 3:32 PM</td>
+              <td>dead body</td>
+              <td>5Mil</td>
+              <td>15%</td>
+              <td>$150</td>
+              <td>Paid</td>
+            </tr>
+            <tr>
+              <td>12/02/2020 3:32 PM</td>
+              <td>dead body</td>
+              <td>5Mil</td>
+              <td>15%</td>
+              <td>$150</td>
+              <td>Paid</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--create Modal -->
+  <div
+    class="modal fade"
+    id="create"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="create">
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">Name</label>
+                <input
+                  name="Name"
+                  placeholder="Enter Name"
+                  type="text"
+                  id="form6Example1"
+                  class="form-control"
+                  [(ngModel)]="Aname"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2">GST</label>
+                <input
+                  name="gst"
+                  placeholder="GST"
+                  type="number"
+                  id="form6Example2"
+                  class="form-control"
+                  [(ngModel)]="Agst"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example3">Email</label>
+            <input
+              name="email"
+              placeholder="Enter Email"
+              type="text"
+              id="form6Example3"
+              class="form-control"
+              [(ngModel)]="Aemail"
+            />
+          </div>
+
+          <!-- Text input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example4">Phone</label>
+            <input
+              name="phone"
+              placeholder="Enter Phone Number"
+              type="number"
+              id="form6Example4"
+              class="form-control"
+              [(ngModel)]="Aphone"
+            />
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example5">Address</label>
+            <input
+              name="address"
+              placeholder="Enter Address"
+              type="email"
+              id="form6Example5"
+              class="form-control"
+              [(ngModel)]="Aaddress"
+            />
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline">
+            <label class="form-label" for="form6Example6">City</label>
+            <input
+              name="city"
+              placeholder="Enter City Name"
+              type="text"
+              id="form6Example6"
+              class="form-control"
+              [(ngModel)]="Acity"
+            />
+          </div>
+
+          <!-- Message input -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">State</label>
+                <input
+                  name="state"
+                  placeholder="Enter State"
+                  placeholder="Enter State"
+                  type="text"
+                  id="form6Example1"
+                  class="form-control"
+                  [(ngModel)]="Astate"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2">Pincode</label>
+                <input
+                  name="zip"
+                  placeholder="Enter Pincode"
+                  type="number"
+                  id="form6Example2"
+                  class="form-control"
+                  [(ngModel)]="Apin_code"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+              (click)="addvendor()"
+            >
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--delete Modal-->
+  <div *ngFor="let v of Vend" class="modal" tabindex="-1" id="delete">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Warning!</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark">No</button>
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            (click)="deleteUser(v.id)"
+            data-bs-dismiss="modal"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

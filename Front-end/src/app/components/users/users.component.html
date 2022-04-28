@@ -1,0 +1,208 @@
+<app-navbar></app-navbar>
+
+<div class="users">
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4"><strong>User</strong></h1>
+            <p class="lead"><strong>User</strong></p>
+        </div>
+    </div>
+    
+    <div class="button">
+        <button type="button" class="btn btn-primary btn-dark" data-bs-toggle="modal" data-bs-target="#add">
+            Create User
+        </button>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-light  table-striped table-hover table-sm table-responsive">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="align-middle tag">
+                <tr>
+                    <td>1</td>
+                    <td>Clark</td>
+                    <td>clark@gmail.com</td>
+                    <td>8741559415</td>
+                    <td>Admin</td>
+                    <td>
+                        <button type="button" class="btn">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button type="button" class="btn"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="button">
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#add">
+        Create User
+    </button>
+</div>
+
+<div class="table-responsive mt-3">
+    <table class="table table-light  table-striped table-hover table-sm table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="align-middle tag">
+            <tr>
+                <td>1</td>
+                <td>Clark</td>
+                <td>clark@gmail.com</td>
+                <td>8741559415</td>
+                <td>Admin</td>
+                <td>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#edit">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#delete">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+
+<!-- Add Modal -->
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create User Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="create">
+                <!-- Name Input -->
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example1">Name</label>
+                    <input placeholder="Enter Name" type="text" id="form6Example1" class="form-control" />
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example5">Email</label>
+                    <input placeholder="Enter Address" type="email" id="form6Example5" class="form-control" />
+                </div>
+
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example2">Contact</label>
+                    <input placeholder="Enter Contact" type="number" id="form6Example2" class="form-control" />
+                </div>
+
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example2">Role</label>
+                    <input placeholder="Enter Role" type="text" id="form6Example2" class="form-control" />
+                </div>
+
+                <!-- Submit button -->
+                <div class="modal-footer mb-4">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-dark">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Modal -->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update User Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="create">
+                <!-- Name Input -->
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example1">Name</label>
+                    <input placeholder="Enter Name" type="text" id="form6Example1" class="form-control" />
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example5">Email</label>
+                    <input placeholder="Enter Address" type="email" id="form6Example5" class="form-control" />
+                </div>
+
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example2">Contact</label>
+                    <input placeholder="Enter Contact" type="number" id="form6Example2" class="form-control" />
+                </div>
+
+                <div class="form-outline my-4">
+                    <label class="form-label" for="form6Example2">Role</label>
+                    <input placeholder="Enter Role" type="text" id="form6Example2" class="form-control" />
+                </div>
+
+                <!-- Submit button -->
+                <div class="modal-footer mb-4">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-dark">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete User Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to Delete this User</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-dark">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

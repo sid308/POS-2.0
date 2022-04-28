@@ -1,0 +1,26 @@
+.jumbotron {
+  margin-left: 15%;
+
+  padding-right: 0px;
+}
+
+.container {
+  margin-left: 14%;
+}
+
+.row {
+  width: 100%;
+}
+
+.button {
+  margin-right: auto;
+}
+
+.modal-content {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.payment {
+  margin-left: 15%;
+}

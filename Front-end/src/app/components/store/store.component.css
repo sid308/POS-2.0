@@ -1,0 +1,20 @@
+.table {
+    width: 82%;
+    margin-top: 1%;
+    margin-left: 16%;
+}
+
+.button {
+    margin-left: 16%;
+}
+
+.jumbotron {
+    margin-left: 15%;
+  
+    padding-right: 0px;
+}
+
+.modal-content {
+    padding-left: 10px;
+    padding-right: 10px;
+}

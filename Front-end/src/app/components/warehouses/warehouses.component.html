@@ -1,0 +1,364 @@
+<app-navbar></app-navbar>
+
+<div class="warehouse">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><strong>Warehouse</strong></h1>
+      <p class="lead">
+        <strong
+          >Securely store products in an organised way to track where your items
+          are located</strong
+        >
+      </p>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-primary btn-dark"
+    (click)="open(addmodal)"
+  >
+    Create Warehouse
+  </button>
+
+  <!-- Add warehouse Modal -->
+  <ng-template #addmodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Insert Details</h4>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <!-- <label for="form-text" class="form-label">FullName :</label> -->
+          <input
+            type="text"
+            name="Name"
+            placeholder="FullName"
+            class="form-control"
+            id="FullName"
+            aria-describedby="name"
+            [(ngModel)]="Aname"
+          />
+        </div>
+        <div class="mb-3">
+          <!-- <label for="textarea" class="form-control" class="form-label"
+            >Address :</label
+          > -->
+          <input
+            type="text"
+            name="add"
+            placeholder="Address"
+            class="form-control"
+            id="address"
+            [(ngModel)]="Aaddress"
+            required
+          />
+          <div class="invalid-feedback">Please enter your address.</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <!-- <label for="state">State</label> -->
+            <input
+              type="text"
+              name="state"
+              placeholder="State"
+              class="form-control"
+              id="state"
+              [(ngModel)]="Astate"
+              required=""
+            />
+            <div class="invalid-feedback">Please provide a valid state.</div>
+          </div>
+          <div class="col-md-5 mb-3">
+            <!-- <label for="City">City</label> -->
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
+              class="form-control"
+              id="City"
+              [(ngModel)]="Acity"
+              required=""
+            />
+            <div class="invalid-feedback">Please select a valid City.</div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <!-- <label for="zip">Pin Code</label> -->
+            <input
+              type="number"
+              name="pin_code"
+              placeholder="Pin Code"
+              class="form-control"
+              id="pin_code"
+              [(ngModel)]="Apin_code"
+              required=""
+            />
+            <div class="invalid-feedback">Zip code required.</div>
+          </div>
+          <div class="mb-3">
+            <!-- <label for="form-text" class="form-label">GST :</label> -->
+            <input
+              type="number"
+              name="weight"
+              placeholder="Weight"
+              class="form-control"
+              id="weight"
+              [(ngModel)]="Aweight"
+            />
+          </div>
+          <div class="mb-3">
+            <!-- <label for="form-text" class="form-label">GST :</label> -->
+            <input
+              type="number"
+              name="amount"
+              placeholder="Amount"
+              class="form-control"
+              id="amount"
+              [(ngModel)]="Aamount"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        data-dismiss="modal"
+        (click)="modal.close('save')"
+      >
+        Close
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="addwarehouse()"
+        (click)="modal.dismiss('')"
+      >
+        Submit
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- main table is here -->
+
+  <div class="container">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <table class="table table-striped table-responsive table-bordered">
+              <thead>
+                <tr>
+                  <th scope="row" *ngFor="let column of headers">
+                    {{ column }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let w of Ware">
+                  <td>{{ w.id }}</td>
+                  <td>{{ w.name }}</td>
+                  <td>{{ w.address }}</td>
+                  <td>{{ w.state }}</td>
+                  <td>{{ w.city }}</td>
+                  <td>{{ w.pin_code }}</td>
+                  <td>{{ w.weight }}</td>
+                  <td>{{ w.amount }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      (click)="open(Editmodal)"
+                      (click)="getSinglewarehouse(w.id)"
+                      (click)="update(w)"
+                      class="btn"
+                    >
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <ng-template #Editmodal let-modal>
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">
+                          Update Warehouse
+                        </h4>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="mb-3">
+                            <!-- <label for="form-text" class="form-label">FullName :</label> -->
+                            <input
+                              type="text"
+                              name="EName"
+                              placeholder="FullName"
+                              class="form-control"
+                              id="Fullname"
+                              [(ngModel)]="WarehouseToUpdate.name"
+                            />
+                          </div>
+
+                          <div class="mb-3">
+                            <!-- <label for="textarea" class="form-control" class="form-label"
+                              >Address :</label
+                            > -->
+                            <input
+                              type="text"
+                              name="Eadd"
+                              placeholder="Address"
+                              class="form-control"
+                              id="eaddress"
+                              [(ngModel)]="WarehouseToUpdate.address"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Please enter your address.
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-4 mb-3">
+                              <!-- <label for="state">State</label> -->
+                              <input
+                                type="text"
+                                name="Estate"
+                                placeholder="State"
+                                class="form-control"
+                                id="estate"
+                                [(ngModel)]="WarehouseToUpdate.state"
+                                required=""
+                              />
+                              <div class="invalid-feedback">
+                                Please provide a valid state.
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <!-- <label for="City">City</label> -->
+                              <input
+                                type="text"
+                                name="Ecity"
+                                placeholder="City"
+                                class="form-control"
+                                id="eCity"
+                                [(ngModel)]="WarehouseToUpdate.city"
+                                required=""
+                              />
+                              <div class="invalid-feedback">
+                                Please select a valid City.
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                              <!-- <label for="zip">Pin Code</label> -->
+                              <input
+                                type="number"
+                                name="Ezip"
+                                placeholder="Pin Code"
+                                class="form-control"
+                                id="ezip"
+                                [(ngModel)]="WarehouseToUpdate.pin_code"
+                                required=""
+                              />
+                              <div class="invalid-feedback">
+                                Zip code required.
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            <input
+                              type="text"
+                              type="hidden"
+                              name="Eadd_id"
+                              placeholder="Address"
+                              class="form-control"
+                              id="eaddress"
+                              [(ngModel)]="WarehouseToUpdate.address_id"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Please enter your address.
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <!-- <label for="form-text" class="form-label">GST :</label> -->
+                            <input
+                              type="text"
+                              name="Eweight"
+                              placeholder="Weight"
+                              class="form-control"
+                              id="eweight"
+                              [(ngModel)]="WarehouseToUpdate.weight"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <!-- <label for="form-text" class="form-label">GST :</label> -->
+                            <input
+                              type="text"
+                              name="Eamount"
+                              placeholder="Amount"
+                              class="form-control"
+                              id="eamount"
+                              [(ngModel)]="WarehouseToUpdate.amount"
+                            />
+                          </div>
+                        </form>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-outline-dark"
+                            data-dismiss="modal"
+                            (click)="modal.close('save')"
+                          >
+                            Close
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-outline-primary"
+                            (click)="putwarehouse(w.id)"
+                            (click)="modal.dismiss('')"
+                          >
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    </ng-template>
+                    <button
+                      type="button"
+                      class="btn"
+                      (click)="open(deleteModal)"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+
+                    <ng-template #deleteModal let-modal>
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">
+                          Warning!
+                        </h4>
+                      </div>
+                      <div class="modal-body">Are you sure?</div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-outline-dark"
+                          (click)="modal.close('Save click')"
+                        >
+                          Close
+                        </button>
+                        <button
+                          class="btn btn-danger"
+                          (click)="deleteUser(w.id)"
+                          (click)="modal.dismiss('')"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </ng-template>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

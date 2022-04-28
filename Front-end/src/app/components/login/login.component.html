@@ -1,0 +1,91 @@
+<section class="vh-100" style="background-color: rgba(0, 0, 0, 0.8)">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <h3 class="mb-5"><strong>Sign in</strong></h3>
+
+            <div class="form-outline mb-4">
+              <input
+                type="email"
+                id="typeEmailX"
+                class="form-control form-control-lg"
+                [(ngModel)]="username"
+                required
+              />
+              <label class="form-label" for="typeEmailX">Email</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input
+                type="password"
+                id="typePasswordX"
+                class="form-control form-control-lg"
+                [(ngModel)]="password"
+                required
+              />
+              <label class="form-label" for="typePasswordX">Password</label>
+            </div>
+
+            <div class="form-check d-flex justify-content-start mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form1Example3"
+              />
+              <label class="form-check-label" for="form1Example3"
+                >Remember password
+              </label>
+            </div>
+            <!-- <a routerLink="/users"> -->
+            <button
+              type="button"
+              mdbbtn=""
+              gradient="blue"
+              block="true"
+              rounded="true"
+              mdbwaveseffect=""
+              (click)="login()"
+              class="z-depth-1a waves-light blue-gradient btn-rounded btn-block btn"
+            >
+              Sign in
+            </button>
+            <!-- </a> -->
+
+            <!-- <hr class="my-4" /> -->
+
+            <!-- <div>
+              <button
+                type="submit"
+                mdbbtn=""
+                gradient="blue"
+                block="true"
+                rounded="true"
+                mdbwaveseffect=""
+                class="z-depth-1a waves-light red-gradient btn-rounded btn-block btn my-4"
+              >
+                Sign in with google
+              </button>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                mdbbtn=""
+                gradient="blue"
+                block="true"
+                rounded="true"
+                mdbwaveseffect=""
+                class="z-depth-1a waves-light grey-gradient btn-rounded btn-block btn"
+              >
+                Sign in with facebook
+              </button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

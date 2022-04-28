@@ -1,0 +1,31 @@
+{
+  "name": "pos",
+  "version": "1.0.0",
+  "description": "POS system for small scale business",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/techop20/pos.git"
+  },
+  "author": "Siddiqui Hozaifa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/techop20/pos/issues"
+  },
+  "homepage": "https://gitlab.com/techop20/pos#readme",
+  "dependencies": {
+    "async": "^3.2.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
+    "mysql2-promise": "^0.1.4",
+    "nodemon": "^2.0.15",
+    "stripe": "^8.219.0"
+  }
+}

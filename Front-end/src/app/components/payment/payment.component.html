@@ -1,0 +1,777 @@
+<app-navbar></app-navbar>
+<!-- <app-orders></app-orders> -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container-fluid">
+    <h1 class="display-4"><strong>Customer Payment</strong></h1>
+    <p class="lead"><strong>Modes of Payment</strong></p>
+  </div>
+</div>
+
+<h2>Angular Stripe Checkout Example</h2>
+
+<button (click)="makePayment(1)" class="payment">Pay With Stripe</button>
+
+<div *ngIf="success">
+  <h1>Your Payment is complete successfully</h1>
+</div>
+<div *ngIf="failure">
+  <h1>Some Error is taken place inside the payment</h1>
+</div>
+
+<div class="py-3">
+  <div class="container row">
+    <div class="card text-center">
+      <div class="card-header mb-1">Saved Debit Card & Credit Card</div>
+      <!-- <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a  class="btn btn-primary">Go somewhere</a>
+        </div> -->
+
+      <div class="button mb-1">
+        <button
+          type="button"
+          class="btn btn-primary btn-dark"
+          data-bs-toggle="modal"
+          data-bs-target="#addcard"
+        >
+          Add Account
+        </button>
+      </div>
+
+      <div class="row hidden-md-up">
+        <div class="col-md-4">
+          <div class="card ms-4">
+            <div class="card-block">
+              <h4 class="card-title">
+                State Bank of India Debit Card ****6868
+              </h4>
+              <h6 class="card-subtitle text-muted">VISA</h6>
+              <p class="card-text py-1">Name Name Name Name</p>
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updatecard"
+                >
+                  Update
+                </button></a
+              >
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-outline-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#removecard"
+                >
+                  Remove
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">
+                State Bank of India Credit Card ****6868
+              </h4>
+              <h6 class="card-subtitle text-muted">VISA</h6>
+              <p class="card-text py-1">Name Name Name Name</p>
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updatecard"
+                >
+                  Update
+                </button></a
+              >
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-outline-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#removecard"
+                >
+                  Remove
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">
+                State Bank of India Debit Card ****6868
+              </h4>
+              <h6 class="card-subtitle text-muted">VISA</h6>
+              <p class="card-text py-1">Name Name Name Name</p>
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updatecard"
+                >
+                  Update
+                </button></a
+              >
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-outline-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#removecard"
+                >
+                  Remove
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card ms-4">
+            <div class="card-block">
+              <h4 class="card-title">
+                State Bank of India Credit Card ****6868
+              </h4>
+              <h6 class="card-subtitle text-muted">VISA</h6>
+              <p class="card-text py-1">Name Name Name Name</p>
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updatecard"
+                >
+                  Update
+                </button></a
+              >
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-outline-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#removecard"
+                >
+                  Remove
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">
+                State Bank of India Debit Card ****6868
+              </h4>
+              <h6 class="card-subtitle text-muted">VISA</h6>
+              <p class="card-text py-1">Name Name Name Name</p>
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updatecard"
+                >
+                  Update
+                </button></a
+              >
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-outline-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#removecard"
+                >
+                  Remove
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">
+                State Bank of India Debit Card ****6868
+              </h4>
+              <h6 class="card-subtitle text-muted">VISA</h6>
+              <p class="card-text py-1">Name Name Name Name</p>
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#updatecard"
+                >
+                  Update
+                </button></a
+              >
+              <a class="card-link"
+                ><button
+                  class="btn btn-sm btn-outline-dark mb-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#removecard"
+                >
+                  Remove
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted mt-2">2 days ago</div>
+    </div>
+  </div>
+</div>
+
+<div class="py-3">
+  <div class="container row">
+    <div class="card text-center">
+      <div class="card-header mb-1">Saved UPI</div>
+      <div class="button mb-1">
+        <button
+          type="button"
+          class="btn btn-primary btn-dark"
+          data-bs-toggle="modal"
+          data-bs-target="#addupi"
+        >
+          Add UPI
+        </button>
+      </div>
+      <!-- <div class="card text-start w-50 h-50 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">Google Pay UPI<h6 class="card-text">State Bank of India ****6121</h6>
+                    </h5>
+
+                    <a class="card-link"><button class="btn btn-sm btn-dark mb-1">Update</button></a>
+                    <a class="card-link"><button class="btn btn-sm btn-outline-dark mb-1">Remove</button></a>
+                </div>
+            </div>
+            <div class="card text-start w-50 h-50 mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">Google Pay UPI<h6 class="card-text">State Bank of India ****6121</h6>
+                    </h5>
+
+                    <a class="card-link"><button class="btn btn-sm btn-dark mb-1">Update</button></a>
+                    <a class="card-link"><button class="btn btn-sm btn-outline-dark mb-1">Remove</button></a>
+                </div>
+            </div> -->
+      <div class="row hidden-md-up">
+        <div class="card text-start w-25 me-4 ms-5 mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Google Pay UPI</h5>
+            <h6 class="card-text">State Bank of India ****6121</h6>
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#updateupi"
+              >
+                Update
+              </button></a
+            >
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-outline-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#removeupi"
+              >
+                Remove
+              </button></a
+            >
+          </div>
+        </div>
+
+        <div class="card text-start w-25 me-4 ms-5 mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Google Pay UPI</h5>
+            <h6 class="card-text">State Bank of India ****6121</h6>
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#updateupi"
+              >
+                Update
+              </button></a
+            >
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-outline-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#removeupi"
+              >
+                Remove
+              </button></a
+            >
+          </div>
+        </div>
+        <div class="card text-start w-25 ms-5 mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Paytm UPI</h5>
+            <h6 class="card-text">State Bank of India ****6121</h6>
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#updateupi"
+              >
+                Update
+              </button></a
+            >
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-outline-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#removeupi"
+              >
+                Remove
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="card text-start w-25 me-4 ms-5 mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Google Pay UPI</h5>
+            <h6 class="card-text">State Bank of India ****6121</h6>
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#updateupi"
+              >
+                Update
+              </button></a
+            >
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-outline-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#removeupi"
+              >
+                Remove
+              </button></a
+            >
+          </div>
+        </div>
+        <div class="card text-start w-25 me-4 ms-5 mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Amazon Pay UPI</h5>
+            <h6 class="card-text">State Bank of India ****6121</h6>
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#updateupi"
+              >
+                Update
+              </button></a
+            >
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-outline-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#removeupi"
+              >
+                Remove
+              </button></a
+            >
+          </div>
+        </div>
+        <div class="card text-start w-25 ms-5 mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Google Pay UPI</h5>
+            <h6 class="card-text">State Bank of India ****6121</h6>
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#updateupi"
+              >
+                Update
+              </button></a
+            >
+            <a class="card-link"
+              ><button
+                class="btn btn-sm btn-outline-dark mb-1"
+                data-bs-toggle="modal"
+                data-bs-target="#removeupi"
+              >
+                Remove
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-3 mb-4">
+  <div class="container row">
+    <div class="card text-center">
+      <div class="card-header mb-1">Net Banking</div>
+      <div class="button mb-1">
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-dark dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Choose an Option
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">State Bank of India</a></li>
+            <li><a class="dropdown-item">Bank of India</a></li>
+            <li><a class="dropdown-item">HDFC Bank</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item">Andhra Bank</a></li>
+            <li><a class="dropdown-item">Bank of India</a></li>
+            <li><a class="dropdown-item">Bank of Maharashtra</a></li>
+            <li><a class="dropdown-item">Canara Bank</a></li>
+            <li><a class="dropdown-item">Central Bank of India</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+<!--Card modal-->
+
+<!-- Add Modal -->
+<div
+  class="modal fade"
+  id="addcard"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Debit or Credit Card</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form class="create">
+        <div class="row my-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">Card Number</label>
+              <input
+                placeholder="Enter Card Number"
+                type="number"
+                id="form6Example1"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form6Example1">Name</label>
+              <input
+                placeholder="Enter Name on Card"
+                type="text"
+                id="form6Example1"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="col mb-4">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example2">Expiry Date</label>
+              <div class="select-date">
+                <select id="select-day">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+                <select id="select-month">
+                  <option value="0">January</option>
+                  <option value="1">February</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+                  <option value="4">May</option>
+                  <option value="5">June</option>
+                  <option value="6">July</option>
+                  <option value="7">August</option>
+                  <option value="8">September</option>
+                  <option value="9">October</option>
+                  <option value="10">November</option>
+                  <option value="11">December</option>
+                </select>
+
+                <select id="select-year">
+                  <option value="1">2021</option>
+                  <option value="2">2022</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="modal-footer mb-4">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-dark">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div
+  class="modal fade"
+  id="updatecard"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Card</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form class="create">
+        <div class="row my-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">CVV (?)</label>
+              <input
+                placeholder="Enter CVV"
+                type="number"
+                id="form6Example1"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="col mb-4">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example2">Expiry Date</label>
+              <div class="select-date">
+                <select id="select-day">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+                <select id="select-month">
+                  <option value="0">January</option>
+                  <option value="1">February</option>
+                  <option value="2">March</option>
+                  <option value="3">April</option>
+                  <option value="4">May</option>
+                  <option value="5">June</option>
+                  <option value="6">July</option>
+                  <option value="7">August</option>
+                  <option value="8">September</option>
+                  <option value="9">October</option>
+                  <option value="10">November</option>
+                  <option value="11">December</option>
+                </select>
+
+                <select id="select-year">
+                  <option value="1">2021</option>
+                  <option value="2">2022</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="modal-footer mb-4">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-dark">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+  class="modal fade"
+  id="removecard"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Card Name</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to Delete this Card</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-dark">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Card modal-->
+
+<!-- Add Modal -->
+<div
+  class="modal fade"
+  id="addupi"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add UPI</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form class="create">
+        <div class="row my-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">UPI ID</label>
+              <input
+                placeholder="Enter UPI ID"
+                type="number"
+                id="form6Example1"
+                class="form-control mb-2"
+              />
+              <button class="btn-sm btn-dark">Verify</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="modal-footer mb-4">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-dark">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div
+  class="modal fade"
+  id="updateupi"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update UPI</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form class="create">
+        <div class="row my-4">
+          <div class="col">
+            <div class="form-outline">
+              <label class="form-label" for="form6Example1">UPI ID</label>
+              <input
+                placeholder="Enter UPI ID"
+                type="number"
+                id="form6Example1"
+                class="form-control mb-2"
+              />
+              <button class="btn-sm btn-dark">Verify</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit button -->
+        <div class="modal-footer mb-4">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-dark">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+  class="modal fade"
+  id="removeupi"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete UPI</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to Delete this UPI</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="btn btn-dark">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

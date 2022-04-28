@@ -1,0 +1,605 @@
+<app-navbar></app-navbar>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><strong>Orders</strong></h1>
+    <p class="lead"><strong>Here you can manage all the orders</strong></p>
+  </div>
+</div>
+
+<div class="button">
+  <button
+    type="button"
+    class="btn btn-primary btn-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#add"
+  >
+    Add Order
+  </button>
+</div>
+
+<div class="table-responsive mt-3">
+  <table
+    class="table table-light table-striped table-hover table-sm table-responsive"
+  >
+    <thead>
+      <tr>
+        <th scope="row" *ngFor="let column of headers">
+          {{ column }}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="align-middle">
+      <tr *ngFor="let o of Ord; let i = index">
+        <td>{{ o.id }}</td>
+        <td>{{ o.amount }}</td>
+        <td>{{ o.order_date }}</td>
+        <td>{{ o.billing_address }}</td>
+        <td>{{ o.shipping_address }}</td>
+        <td>{{ o.payment_status }}</td>
+        <td>{{ o.amount_paid }}</td>
+        <td>{{ o.mode_of_payment }}</td>
+        <td>{{ o.customer_id }}</td>
+        <td>{{ o.note }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#edit"
+            (click)="getSingleorder(o.id)"
+            (click)="update(o)"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+          <a
+            routerLink="/invoice/{{ o.id }}"
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
+          >
+            <i class="bi bi-receipt"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--edit Modal -->
+  <!--Add Modal -->
+  <div
+    *ngFor="let o of Ord"
+    class="modal fade"
+    id="edit"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="create">
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Billing Address</label
+                >
+                <input
+                  [(ngModel)]="Abilling_address"
+                  name="billing_address"
+                  type="text"
+                  id="form6Example2"
+                  class="form-control"
+                  [(ngModel)]="OrderToUpdate.billing_address"
+                />
+              </div>
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Shipping Address</label
+                >
+                <input
+                  [(ngModel)]="Ashipping_address"
+                  name="shipping_address"
+                  type="text"
+                  id="form6Example2"
+                  class="form-control"
+                  [(ngModel)]="OrderToUpdate.shipping_address"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">Date</label>
+                <input
+                  [(ngModel)]="OrderToUpdate.order_date"
+                  name="order_date"
+                  type="date"
+                  id="form6Example1"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Total Amount</label
+                >
+                <input
+                  [(ngModel)]="OrderToUpdate.amount"
+                  name="amount"
+                  type="number"
+                  id="form6Example2"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1"
+                  >Amount Paid</label
+                >
+                <input
+                  [(ngModel)]="OrderToUpdate.amount_paid"
+                  name="amount_paid"
+                  type="number"
+                  id="form6Example1"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Payment Status</label
+                >
+                <select
+                  [(ngModel)]="OrderToUpdate.payment_status"
+                  name="payment_status"
+                  placeholder="Payment Status"
+                  class="form-control"
+                >
+                  <option value="Paid">Paid</option>
+                  <option value="Due">Due</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1"
+                  >Amount Paid</label
+                >
+                <input
+                  [(ngModel)]="Aamount_paid"
+                  name="amount_paid"
+                  placeholder="Amount Paid"
+                  type="text"
+                  id="form6Example1"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example5"
+              >Mode of Payment</label
+            >
+            <select
+              [(ngModel)]="OrderToUpdate.mode_of_payment"
+              name="mode_of_payment"
+              class="form-control"
+            >
+              <option value="Cash">Cash</option>
+              <option value="Online">Online</option>
+            </select>
+          </div>
+
+          <div class="form-outline">
+            <label class="form-label" for="form6Example6">Customer</label>
+            <!-- <input [(ngModel)]="Acustomer_id" name="customer_id" placeholder="customer_id" type="text" id="form6Example6" class="form-control" /> -->
+            <select
+              [(ngModel)]="OrderToUpdate.customer_id"
+              name="customer_id"
+              class="form-control"
+            >
+              <option
+                *ngFor="let customer of customers"
+                value="{{ customer?.id }}"
+              >
+                {{ customer?.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline">
+            <label class="form-label" for="form6Example6">Note</label>
+            <input
+              [(ngModel)]="OrderToUpdate.note"
+              name="note"
+              placeholder="Note"
+              type="text"
+              id="form6Example6"
+              class="form-control"
+            />
+          </div>
+
+          <!-- Submit button -->
+          <div class="modal-footer mb-4">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn btn-success"
+              (click)="putorder(o.id)"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--address detail Modal -->
+  <div
+    class="modal fade"
+    id="detail"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <form>
+      <div class="form-group row">
+        <label
+          for="colFormLabelSm"
+          class="col-sm-2 col-form-label col-form-label-sm"
+          >Email</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control form-control-sm"
+            id="colFormLabelSm"
+            placeholder="col-form-label-sm"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control"
+            id="colFormLabel"
+            placeholder="col-form-label"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="colFormLabelLg"
+          class="col-sm-2 col-form-label col-form-label-lg"
+          >Email</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="colFormLabelLg"
+            placeholder="col-form-label-lg"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!--Delete Modal -->
+  <div
+    *ngFor="let o of Ord"
+    class="modal fade"
+    id="delete"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            No
+          </button>
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+            (click)="deleteUser(o.id)"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Add Modal -->
+  <div
+    class="modal fade"
+    id="add"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="create">
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Billing Address</label
+                >
+                <input
+                  [(ngModel)]="Abilling_address"
+                  name="billing_address"
+                  type="text"
+                  id="form6Example2"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Shipping Address</label
+                >
+                <input
+                  [(ngModel)]="Ashipping_address"
+                  name="shipping_address"
+                  type="text"
+                  id="form6Example2"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1">Date</label>
+                <input
+                  [(ngModel)]="Aorder_date"
+                  name="order_date"
+                  type="date"
+                  id="form6Example1"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Total Amount</label
+                >
+                <input
+                  [(ngModel)]="Aamount"
+                  name="amount"
+                  type="number"
+                  id="form6Example2"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input -->
+          <div class="row">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1"
+                  >Amount Paid</label
+                >
+                <input
+                  [(ngModel)]="Aamount_paid"
+                  name="amount_paid"
+                  type="number"
+                  id="form6Example1"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example2"
+                  >Payment Status</label
+                >
+                <select
+                  [(ngModel)]="Apayment_status"
+                  name="payment_status"
+                  placeholder="Payment Status"
+                  class="form-control"
+                >
+                  <option value="Paid">Paid</option>
+                  <option value="Due">Due</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="form6Example1"
+                  >Amount Paid</label
+                >
+                <input
+                  [(ngModel)]="Aamount_paid"
+                  name="amount_paid"
+                  placeholder="Amount Paid"
+                  type="text"
+                  id="form6Example1"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example5"
+              >Mode of Payment</label
+            >
+            <select
+              [(ngModel)]="Amode_of_payment"
+              name="mode_of_payment"
+              class="form-control"
+            >
+              <option value="Cash">Cash</option>
+              <option value="Online">Online</option>
+            </select>
+          </div>
+
+          <div class="form-outline">
+            <label class="form-label" for="form6Example6">Customer</label>
+            <!-- <input [(ngModel)]="Acustomer_id" name="customer_id" placeholder="customer_id" type="text" id="form6Example6" class="form-control" /> -->
+            <select
+              [(ngModel)]="Acustomer_id"
+              name="customer_id"
+              class="form-control"
+            >
+              <option
+                *ngFor="let customer of customers"
+                value="{{ customer?.id }}"
+              >
+                {{ customer?.name }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline">
+            <label class="form-label" for="form6Example6">Note</label>
+            <input
+              [(ngModel)]="Anote"
+              name="note"
+              placeholder="Note"
+              type="text"
+              id="form6Example6"
+              class="form-control"
+            />
+          </div>
+
+          <!-- Submit button -->
+          <div class="modal-footer mb-4">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn btn-success"
+              (click)="addorder()"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--address detail Modal -->
+  <div
+    class="modal fade"
+    id="detail"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <form>
+      <div class="form-group row">
+        <label
+          for="colFormLabelSm"
+          class="col-sm-2 col-form-label col-form-label-sm"
+          >Email</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control form-control-sm"
+            id="colFormLabelSm"
+            placeholder="col-form-label-sm"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control"
+            id="colFormLabel"
+            placeholder="col-form-label"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="colFormLabelLg"
+          class="col-sm-2 col-form-label col-form-label-lg"
+          >Email</label
+        >
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            id="colFormLabelLg"
+            placeholder="col-form-label-lg"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
